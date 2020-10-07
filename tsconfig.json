@@ -1,0 +1,10 @@
+  {
+    "compilerOptions": {
+      "outDir": "./target",
+      "allowJs": false,
+      "target": "ES6",
+      "pretty": true
+    },
+    "include": ["./src/**/*"],
+    "exclude": ["node_modules"]
+  }

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script type="module" src="./target/Main.js"></script>
+        <script>
+            function showKey() {document.body.onkeydown = (ev) => {console.log("key: "+ev.key+" code: "+ev.keyCode);}}
+            function hideKey() {document.body.onkeydown = (ev) => {}}
+            function showMouse() {document.body.onmousedown = (ev) => {console.log("button: "+ev.button)}}
+            function hideMouse() {document.body.onmousedown = (ev) => {}}
+        </script>
+    </body>
+</html>
