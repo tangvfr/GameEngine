@@ -1,2 +1,2 @@
-# TankVsTank
-It is  tank game project in TypeScript.
+# GameEngine
+It is game engine project in TypeScript.
