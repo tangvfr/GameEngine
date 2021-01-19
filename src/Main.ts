@@ -34,18 +34,20 @@ document.body.onresize = initMargin;
 document.body.onload = initMargin;
 
 //create game
-import GameTank from "./game/GameTank.js";
-import GameStat from "./gamestat/GameStat.js";
-import StatGame from "./gamestat/StatGame.js";
-import StatMenu from "./gamestat/StatMenu.js";
-import EnumStats from "./gamestat/EnumStats.js";
+import GameShoe from "./game/GameShoe.js";
 import Loader from "./loader/Loader.js";
 import Load from "./loader/Load.js";
 
 //resources
+import Resource from "./Resources.js";
 let resource: Load[] = [];
-resource.push(new Load("test_image_test", "textures/carte_size.png"));
+for (let i = 0; i < Resource.resource.length; i++) {
+    let itm: string[] = Resource.resource[i];
+    resource.push(new Load(itm[0], itm[1]));
+}
 
+//states
+import States from "./States.js";
 
 //start loading
 class Loading extends Loader {
@@ -55,19 +57,9 @@ class Loading extends Loader {
     }
 
     public finish(current: number, max: number): void {
-         //list stats
-        let states: GameStat[] = [new StatMenu()];
-        function addStates(stat: GameStat): void {
-            states[stat.getID()] = stat;
-        }
-
-        //add states
-        addStates(new StatMenu());
-        addStates(new StatGame());
-
         //start game
-        let gameTank: GameTank = new GameTank(_canvas, _canvas.width, _canvas.height, states, this.keepImages());
-        gameTank.start(EnumStats.STAT_MENU);
+        let gameShoe: GameShoe = new GameShoe(_canvas, _canvas.width, _canvas.height, States.states, this.keepImages());
+        gameShoe.start(States.startState);
     }
 
     public error(current: number, max: number, load: Load): void {
@@ -75,7 +67,7 @@ class Loading extends Loader {
         canvas.fillStyle = "#FFDDDD";
         canvas.fillRect(0, 0, _canvas.width, _canvas.height);
         canvas.fillStyle = "FF0000";
-        canvas.fillText("Error loading !", 300, 180);
+        canvas.fillText("Error loading with \""+load._path+"\"!", 30, 180);
     }
 
 }
