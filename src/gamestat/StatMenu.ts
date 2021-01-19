@@ -37,6 +37,7 @@ export default class StatMenu implements GameStat {
         canvas.fillRect(0, 0, game.width, game.height);
         this.elementManager.render(game, this, canvas);
         canvas.drawImage(game.getResource("test_image_test"), 0, 0, 64, 64);
+        canvas.drawImage(game.getResource("test_image_red"), 128, 0, 64, 64);
     }
 
     public getID(): number {
